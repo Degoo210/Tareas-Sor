@@ -1,0 +1,12 @@
+.vscode/
+**/obj/
+*.o
+*.a
+*.out
+*.pdf
+*.csv
+
+BaseT1/high_input/
+BaseT1/high_output/
+BaseT1/tests/
+BaseT1/DCCyclone
