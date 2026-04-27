@@ -169,12 +169,17 @@ int main(int argc, char *argv[]) {
             // 6.5 Si hay un proceso con mayor prioridad en estado READY, pasar proceso en ejecución a estado READY y regresarlo a su cola de origen
             else {
                 Process* top = heap_peek(high);
+                bool preempt_high = (top != NULL && running->inHigh &&
+                    (top->deadline < running->deadline ||
+                    (top->deadline == running->deadline && top->pid < running->pid)));
+                bool preempt_low = (!running->inHigh && high->used > 0);
 
-                if (top != NULL && (top->deadline < running->deadline || (top->deadline == running->deadline && top->pid < running->pid))) {
+                if (preempt_high || preempt_low) {
                     running->interruptions++;
                     running->tlcpu = tick;
                     running->estado = READY;
-                    if (running->inHigh) heap_insert(high, running); else heap_insert(low, running);
+                    if (running->inHigh) heap_insert(high, running);
+                    else heap_insert(low, running);
                     running = NULL;
                 }
             }
