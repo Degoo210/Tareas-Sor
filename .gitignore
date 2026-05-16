@@ -5,8 +5,11 @@
 *.out
 *.pdf
 *.csv
+*.txt
+*.bin
 
 BaseT1/high_input/
 BaseT1/high_output/
 BaseT1/tests/
 BaseT1/DCCyclone
+BaseT2/homer_memory
