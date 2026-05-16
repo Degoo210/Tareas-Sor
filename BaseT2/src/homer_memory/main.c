@@ -51,11 +51,11 @@ int main(int argc, char* argv[]) {
     homerFile* hf;
 
     hf = open_file(1, "patrona.txt", 'w');
-    write_file(hf, "hueso.txt");
+    write_file(hf, "patrona.txt");
     close_file(hf);
  
     hf = open_file(2, "sofa.txt", 'w');
-    write_file(hf, "raton.txt");
+    write_file(hf, "sofa.txt");
     close_file(hf);
  
     hf = open_file(3, "gusano.txt", 'w');
@@ -63,7 +63,7 @@ int main(int argc, char* argv[]) {
     close_file(hf);
  
     hf = open_file(4, "duerme.txt", 'w');
-    write_file(hf, "pasto.txt");
+    write_file(hf, "duerme.txt");
     close_file(hf);
  
     // list_files
@@ -89,13 +89,13 @@ int main(int argc, char* argv[]) {
     hf = open_file(1, "patrona.txt", 'r');
     read_file(hf, "patrona_copia.txt");
     close_file(hf);
-    f = fopen("patrona.txt", "r");
+    f = fopen("patrona_copia.txt", "r");
     char buf[256];
     while (fgets(buf, sizeof(buf), f)) printf("  %s", buf);
     fclose(f);
  
     // delete_file
-    printf("\n--- Borrando raton.txt de gia_miau ---\n");
+    printf("\n--- Borrando sofa.txt de gia_miau ---\n");
     delete_file(2, "sofa.txt");
     printf("\n--- Archivos pid=2 (gia_miau) --- <--- Después del delete\n\n\n");
     list_files(2);
